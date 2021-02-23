@@ -26,4 +26,10 @@ export class CheckBusiness {
       );
     }
   };
+
+  public checkExistenceObject = (reqObject: any, message: string) => {
+    if (!reqObject || reqObject === undefined) {
+      throw new CustomError(404, `${message}`);
+    }
+  };
 }

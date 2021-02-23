@@ -12,4 +12,17 @@ export class UserDatabase extends BaseDatabase {
       throw new Error(error.sqlMessage || error.message);
     }
   };
+
+  public selectUserByEmail = async (email: string): Promise<User> => {
+    try {
+    const result =  await BaseDatabase.connection
+        .select("*")
+        .from(TablesDatabase.PIXEIDOS_USERS)
+        .where({email})
+
+    return result[0]
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  };
 }

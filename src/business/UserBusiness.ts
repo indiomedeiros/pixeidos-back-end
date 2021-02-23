@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { User, UserInputDTO } from "./entities/User";
+import { LoginInputDTO, User, UserInputDTO } from "./entities/User";
 import { CheckBusiness } from "./errors/CheckBusiness";
 import { CustomError } from "./errors/CustomError";
 import { Autheticator } from "./service/Authenticator";
@@ -37,6 +37,35 @@ export class UserBusiness {
       await this.userDatabase.createUser(user);
 
       const acessToken = this.authenticator.generateToken({ id });
+
+      return acessToken;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  };
+
+  getUserByEmail = async (loginInputDTO: LoginInputDTO): Promise<string> => {
+    try {
+      const { email, password } = loginInputDTO;
+      const check = new CheckBusiness();
+
+      check.checkEmailFormat(email);
+      check.checkPasswordFormat(password);
+
+      const user: User = await this.userDatabase.selectUserByEmail(email);
+      check.checkExistenceObject(user, "User not found");
+
+      const passwordIsCorrect: boolean = await this.hashManager.compare(
+        password,
+        user.password
+      );
+
+      check.checkExistenceObject(passwordIsCorrect, "Incorrect password");
+
+      const acessToken = this.authenticator.generateToken({ id: user.id });
 
       return acessToken;
     } catch (error) {

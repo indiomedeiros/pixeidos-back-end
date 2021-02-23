@@ -8,3 +8,12 @@ Content-Type: application/json
     "nickname": "Ìndio",
     "password": "12345678"  
 }
+
+### login
+POST http://localhost:3003/user/login 
+Content-Type: application/json
+
+{
+   "email": "bboyindio@gmail.com",
+   "password": "1234567"    
+}
