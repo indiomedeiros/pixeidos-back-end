@@ -1,4 +1,4 @@
-import { UserInputDTO } from "../src/business/entities/User";
+import { LoginInputDTO, UserInputDTO } from "../src/business/entities/User";
 import { UserBusiness } from "../src/business/UserBusiness";
 
 const idGenerator = { generate: jest.fn(() => "test") } as any;
@@ -60,6 +60,47 @@ describe("Testing user registration", () => {
       };
 
       await userBusiness.createUser(input);
+    } catch (error) {}
+  });
+
+  test("Should return password not found", async () => {
+    expect.assertions(2);
+    try {
+      const input: LoginInputDTO = {
+        email: "bboyindio@gmail.com",
+        password: "",
+      };
+
+      await userBusiness.getUserByEmail(input);
+    } catch (error) {
+      expect(error.statusCode).toBe(406);
+      expect(error.message).toBe("'password' not found");
+    }
+  });
+
+  test("Should return email not found", async () => {
+    expect.assertions(2);
+    try {
+      const input: LoginInputDTO = {
+        email: "",
+        password: "12345678",
+      };
+
+      await userBusiness.getUserByEmail(input);
+    } catch (error) {
+      expect(error.statusCode).toBe(406);
+      expect(error.message).toBe("'email' not found");
+    }
+  });
+
+  test("Shoulder return Sucess!", async () => {
+    try {
+      const input: LoginInputDTO = {
+        email: "bboyindio@gmail.com",
+        password: "12345678",
+      };
+
+      await userBusiness.getUserByEmail(input);
     } catch (error) {}
   });
 });
