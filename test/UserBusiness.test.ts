@@ -93,7 +93,7 @@ describe("Testing user registration", () => {
     }
   });
 
-  test("Shoulder return Sucess!", async () => {
+  test("Should return Sucess!", async () => {
     try {
       const input: LoginInputDTO = {
         email: "bboyindio@gmail.com",
