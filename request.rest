@@ -1,0 +1,10 @@
+### create User
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Índio Medeiros",
+    "email": "bboyindio@gmail.com",
+    "nickname": "Ìndio",
+    "password": "12345678"  
+}

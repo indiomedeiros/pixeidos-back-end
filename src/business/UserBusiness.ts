@@ -13,7 +13,7 @@ export class UserBusiness {
   ) {}
 
   createUser = async (userInputDTO: UserInputDTO): Promise<string> => {
-    const { name, email, password } = userInputDTO;
+    const { name, email, nickname, password } = userInputDTO;
 
     const id = this.idGenerator.generate();
     const hashPassword = await this.hashManager.hash(password);
@@ -21,6 +21,7 @@ export class UserBusiness {
       id,
       name,
       email,
+      nickname,
       password: hashPassword,
     };
 

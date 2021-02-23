@@ -3,6 +3,7 @@ export class User {
     public readonly id: string,
     public readonly name: string,
     public readonly email: string,
+    public readonly nickname: string,
     public readonly password: string
   ) {}
 }
@@ -14,5 +15,6 @@ export interface AuthenticationData {
 export interface UserInputDTO {
   name: string;
   email: string;
+  nickname: string;
   password: string;
 }

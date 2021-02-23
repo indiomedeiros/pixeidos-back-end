@@ -4,7 +4,7 @@
    "main": "index.js",
    "scripts": {
       "start": "tsc && node ./build/src/index.js",
-      "createTables": "tsc && node ./build/src/mysqlSetup.js",
+      "createTables": "tsc && node ./build/src/data/mysqlSetup.js",
       "dev": "ts-node-dev ./src/index.ts",
       "test": "jest"
    },

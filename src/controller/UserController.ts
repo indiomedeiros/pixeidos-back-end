@@ -16,10 +16,11 @@ const userBusiness = new UserBusiness(
 export class UserController {
   async signup(req: Request, res: Response): Promise<void> {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, nickname, password } = req.body;
       const user: UserInputDTO = {
         name,
         email,
+        nickname,
         password,
       };
 
