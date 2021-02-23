@@ -14,7 +14,7 @@ export class UserBusiness {
     private userDatabase: UserDatabase
   ) {}
 
-  createUser = async (userInputDTO: UserInputDTO): Promise<string> => {
+  public async createUser(userInputDTO: UserInputDTO): Promise<string> {
     try {
       const { name, email, nickname, password } = userInputDTO;
       const check = new CheckBusiness();
@@ -45,9 +45,9 @@ export class UserBusiness {
         error.sqlMessage || error.message
       );
     }
-  };
+  }
 
-  getUserByEmail = async (loginInputDTO: LoginInputDTO): Promise<string> => {
+  public async getUserByEmail(loginInputDTO: LoginInputDTO): Promise<string> {
     try {
       const { email, password } = loginInputDTO;
       const check = new CheckBusiness();
@@ -74,5 +74,5 @@ export class UserBusiness {
         error.sqlMessage || error.message
       );
     }
-  };
+  }
 }

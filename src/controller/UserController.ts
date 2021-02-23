@@ -14,7 +14,7 @@ const userBusiness = new UserBusiness(
 );
 
 export class UserController {
-  async signup(req: Request, res: Response): Promise<void> {
+  public async signup(req: Request, res: Response): Promise<void> {
     try {
       const { name, email, nickname, password } = req.body;
       const user: UserInputDTO = {
@@ -32,12 +32,12 @@ export class UserController {
     }
   }
 
-  async login(req: Request, res: Response): Promise<void> {
+  public async login(req: Request, res: Response): Promise<void> {
     try {
       const { email, password } = req.body;
       const loginInputDTO: LoginInputDTO = {
         email,
-        password
+        password,
       };
 
       const token = await userBusiness.getUserByEmail(loginInputDTO);

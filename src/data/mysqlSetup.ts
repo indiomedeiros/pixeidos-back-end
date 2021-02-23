@@ -2,7 +2,7 @@ import { BaseDatabase } from "./BaseDatabase";
 import { TablesDatabase } from "./TablesDatabase";
 
 class CreateTables extends BaseDatabase {
-  public createTables = async (): Promise<void> => {
+  public async createTables(): Promise<void> {
     try {
       await BaseDatabase.connection.raw(`
         CREATE TABLE ${TablesDatabase.PIXEIDOS_USERS} (
@@ -17,7 +17,7 @@ class CreateTables extends BaseDatabase {
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);
     }
-  };
+  }
 }
 
 const tables = new CreateTables();
