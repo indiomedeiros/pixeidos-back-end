@@ -12,4 +12,16 @@ export class ImageDatabase extends BaseDatabase {
       throw new Error(error.sqlMessage || error.message);
     }
   }
+
+  public async getAllImages(): Promise<Image[]> {
+    
+    try {
+      const result = await BaseDatabase.connection
+        .select("*")
+        .from(TablesDatabase.PIXEIDOS_IMAGES);
+      return result;
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
 }

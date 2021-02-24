@@ -9,7 +9,7 @@ export class ImageBusiness {
   constructor(
     private authenticator: Autheticator,
     private idGenerator: IdGenerator,
-    private imageDatabase: ImageDatabase,
+    private imageDatabase: ImageDatabase
   ) {}
 
   public async createImage(imageInputDTO: ImageInputDTO): Promise<string> {
@@ -40,6 +40,24 @@ export class ImageBusiness {
       await this.imageDatabase.createImage(image);
 
       return message;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  }
+
+  public async getAllImages(token: string): Promise<Image[]> {
+    try {
+      const check = new CheckBusiness();
+      check.checkExistenceProperty(token, "token");
+
+      await this.authenticator.getTokenData(token);
+
+      const result: Image[] = await this.imageDatabase.getAllImages();
+
+      return result;
     } catch (error) {
       throw new CustomError(
         error.statusCode,

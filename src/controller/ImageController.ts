@@ -33,4 +33,18 @@ export class ImageController {
         .send(error.sqlMessage || error.message);
     }
   }
+
+  public async getAllImages(req: Request, res: Response): Promise<void> {
+    try {
+      const token = req.headers.authorization as string;
+
+      const result = await imageBusiness.getAllImages(token);
+
+      res.status(200).send(result);
+    } catch (error) {
+      res
+        .status(error.statusCode || 400)
+        .send(error.sqlMessage || error.message);
+    }
+  }
 }
