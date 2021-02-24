@@ -15,10 +15,10 @@ class CreateTables extends BaseDatabase {
 
          CREATE TABLE ${TablesDatabase.PIXEIDOS_IMAGES} (
             id VARCHAR(255) PRIMARY KEY,
-            subtitle VARCHAR(255) NOT NULL,
+            subtitle VARCHAR(255) NOT NULL UNIQUE,
             author VARCHAR(255) NOT NULL,
             date DATE NOT NULL,
-            file VARCHAR(255) NOT NULL,
+            file VARCHAR(255) NOT NULL UNIQUE,
             tags VARCHAR(255) NOT NULL,
             collection VARCHAR(255) NOT NULL,
             FOREIGN KEY (author) REFERENCES PIXEIDOS_USERS(id)
