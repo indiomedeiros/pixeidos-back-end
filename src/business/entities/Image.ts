@@ -17,3 +17,4 @@ export interface ImageInputDTO {
   collection: string;
   token: string
 }
+

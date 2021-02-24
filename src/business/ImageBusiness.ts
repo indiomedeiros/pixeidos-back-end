@@ -65,4 +65,23 @@ export class ImageBusiness {
       );
     }
   }
+
+  public async getImageById(token: string, id: string): Promise<Image> {
+    try {
+      const check = new CheckBusiness();
+      check.checkExistenceProperty(token, "token");
+      check.checkExistenceProperty(id, "id");
+
+      await this.authenticator.getTokenData(token);
+
+      const result: Image = await this.imageDatabase.getImageById(id);
+      check.checkExistenceObject(result, "Nothing was found from the given 'id'");
+      return result;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  }
 }

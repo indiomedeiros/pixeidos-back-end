@@ -14,12 +14,24 @@ export class ImageDatabase extends BaseDatabase {
   }
 
   public async getAllImages(): Promise<Image[]> {
-    
     try {
       const result = await BaseDatabase.connection
         .select("*")
         .from(TablesDatabase.PIXEIDOS_IMAGES);
       return result;
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
+  public async getImageById(id: string): Promise<Image> {
+    try {
+      const result = await BaseDatabase.connection
+        .select("*")
+        .from(TablesDatabase.PIXEIDOS_IMAGES)
+        .where({id})
+      return result[0];
+      
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);
     }

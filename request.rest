@@ -34,3 +34,7 @@ GET http://localhost:3003/image/all
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNDE4ODQwNiwiZXhwIjoxNjE0Mjc0ODA2fQ.oirNr4rLpCLosMSZLS9v0nN3SxB1J-kgKVq-KsQa39U
 
+###get images by id
+GET http://localhost:3003/image/58f9a328-70d5-4506-96ee-1b420c81d94f
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNDE4ODQwNiwiZXhwIjoxNjE0Mjc0ODA2fQ.oirNr4rLpCLosMSZLS9v0nN3SxB1J-kgKVq-KsQa39U
