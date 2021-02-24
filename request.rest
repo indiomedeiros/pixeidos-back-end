@@ -17,3 +17,15 @@ Content-Type: application/json
    "email": "bboyindio@gmail.com",
    "password": "12345678"    
 }
+
+### create Image
+POST http://localhost:3003/image/create
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNDE4ODQwNiwiZXhwIjoxNjE0Mjc0ODA2fQ.oirNr4rLpCLosMSZLS9v0nN3SxB1J-kgKVq-KsQa39U 
+
+{
+	"subtitle": "Crianças brincando no deserto",
+	"file": "https://pixabay.com/images/id-5833685/",
+	"tags": "[Crianças, Infância, Jogos, Jogar, Diversão, Brincalhão]",
+	"collection": "vida"    
+}

@@ -14,7 +14,7 @@ export class ImageBusiness {
 
   public async createImage(imageInputDTO: ImageInputDTO): Promise<string> {
     try {
-      const message: string = `Your image has been added to the database`;
+      const message: string = `Image create sucess!`;
       const { subtitle, file, tags, collection, token } = imageInputDTO;
       const check = new CheckBusiness();
 
