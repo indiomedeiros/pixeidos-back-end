@@ -39,10 +39,10 @@ export class ImageDatabase extends BaseDatabase {
 
   public async searchImage(dataSearch: string): Promise<Image[]> {
     try {
-      const result = await BaseDatabase.connection.raw(`
-      SELECT * FROM ${TablesDatabase.PIXEIDOS_IMAGES}
-      WHERE tags LIKE "%${dataSearch}%"
-      `);
+      const result = await BaseDatabase.connection
+        .select("*")
+        .from(TablesDatabase.PIXEIDOS_IMAGES)
+        .where("tags", "LIKE", `%${dataSearch}%`);
 
       return result[0];
     } catch (error) {
