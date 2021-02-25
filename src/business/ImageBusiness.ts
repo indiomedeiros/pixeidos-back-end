@@ -23,7 +23,7 @@ export class ImageBusiness {
       check.checkExistenceProperty(tags, "tags");
       check.checkExistenceProperty(collection, "collection");
       check.checkExistenceProperty(token, "token");
-
+      
       const author = await this.authenticator.getTokenData(token);
       const id = this.idGenerator.generate();
       const date = new Date();
@@ -36,7 +36,7 @@ export class ImageBusiness {
         tags,
         collection,
       };
-
+      
       await this.imageDatabase.createImage(image);
 
       return message;
@@ -75,7 +75,29 @@ export class ImageBusiness {
       await this.authenticator.getTokenData(token);
 
       const result: Image = await this.imageDatabase.getImageById(id);
-      check.checkExistenceObject(result, "Nothing was found from the given 'id'");
+      check.checkExistenceObject(
+        result,
+        "Nothing was found from the given 'id'"
+      );
+      return result;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  }
+
+  public async searchImage(dataSearch: string): Promise<Image[]> {
+    try {
+      const check = new CheckBusiness();
+      check.checkExistenceProperty(dataSearch, "dataSearch");
+
+      const result: Image[] = await this.imageDatabase.searchImage(dataSearch);
+      check.checkExistenceArray(
+        result,
+        "Nothing was found from the given data search"
+      );
       return result;
     } catch (error) {
       throw new CustomError(

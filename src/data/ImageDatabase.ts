@@ -5,6 +5,7 @@ import { TablesDatabase } from "./TablesDatabase";
 export class ImageDatabase extends BaseDatabase {
   public async createImage(image: Image): Promise<void> {
     try {
+      // const result = this.changeArrayToString(image);
       await BaseDatabase.connection
         .insert(image)
         .into(TablesDatabase.PIXEIDOS_IMAGES);
@@ -29,9 +30,21 @@ export class ImageDatabase extends BaseDatabase {
       const result = await BaseDatabase.connection
         .select("*")
         .from(TablesDatabase.PIXEIDOS_IMAGES)
-        .where({id})
+        .where({ id });
       return result[0];
-      
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
+  public async searchImage(dataSearch: string): Promise<Image[]> {
+    try {
+      const result = await BaseDatabase.connection.raw(`
+      SELECT * FROM ${TablesDatabase.PIXEIDOS_IMAGES}
+      WHERE tags LIKE "%${dataSearch}%"
+      `);
+
+      return result[0];
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);
     }

@@ -32,4 +32,10 @@ export class CheckBusiness {
       throw new CustomError(404, `${message}`);
     }
   };
+
+  public checkExistenceArray = (reqArray: any, message: string) => {
+    if (!reqArray || reqArray.length === 0) {
+      throw new CustomError(404, `${message}`);
+    }
+  };
 }
