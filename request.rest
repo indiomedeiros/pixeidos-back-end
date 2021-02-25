@@ -26,7 +26,7 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtN
 {
 	"subtitle": "Crianças brincando no deserto",
 	"file": "https://pixabay.com/images/id-5833685/",
-	"tags": "[Crianças, Infância, Jogos, Jogar, Diversão, Brincalhão,]",
+	"tags": "Crianças, Infância, Jogos, Jogar, Diversão, Brincalhão",
 	"collection": "vida"    
 }
 ###get all images
@@ -38,3 +38,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUt
 GET http://localhost:3003/image/58f9a328-70d5-4506-96ee-1b420c81d94f
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNDE4ODQwNiwiZXhwIjoxNjE0Mjc0ODA2fQ.oirNr4rLpCLosMSZLS9v0nN3SxB1J-kgKVq-KsQa39U
+
+###search images
+GET http://localhost:3003/image/search?dataSearch=Crianças
+Content-Type: application/json

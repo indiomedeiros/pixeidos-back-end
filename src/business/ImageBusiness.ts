@@ -56,7 +56,10 @@ export class ImageBusiness {
       await this.authenticator.getTokenData(token);
 
       const result: Image[] = await this.imageDatabase.getAllImages();
-
+      check.checkExistenceArray(
+        result,
+        "There are no images"
+      );
       return result;
     } catch (error) {
       throw new CustomError(
@@ -75,7 +78,29 @@ export class ImageBusiness {
       await this.authenticator.getTokenData(token);
 
       const result: Image = await this.imageDatabase.getImageById(id);
-      check.checkExistenceObject(result, "Nothing was found from the given 'id'");
+      check.checkExistenceObject(
+        result,
+        "Nothing was found from the given 'id'"
+      );
+      return result;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  }
+
+  public async searchImage(dataSearch: string): Promise<Image[]> {
+    try {
+      const check = new CheckBusiness();
+      check.checkExistenceProperty(dataSearch, "dataSearch");
+
+      const result: Image[] = await this.imageDatabase.searchImage(dataSearch);
+      check.checkExistenceArray(
+        result,
+        "Nothing was found from the given data search"
+      );
       return result;
     } catch (error) {
       throw new CustomError(

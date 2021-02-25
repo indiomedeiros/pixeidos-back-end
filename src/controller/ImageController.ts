@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ImageInputDTO } from "../business/entities/Image";
+import { Image, ImageInputDTO } from "../business/entities/Image";
 import { ImageBusiness } from "../business/ImageBusiness";
 import { Autheticator } from "../business/service/Authenticator";
 import { IdGenerator } from "../business/service/IdGenerator";
@@ -54,6 +54,20 @@ export class ImageController {
       const id = req.params.id
 
       const result = await imageBusiness.getImageById(token, id);
+
+      res.status(200).send(result);
+    } catch (error) {
+      res
+        .status(error.statusCode || 400)
+        .send(error.sqlMessage || error.message);
+    }
+  }
+
+  public async searchImage(req: Request, res: Response): Promise<void> {
+    try {
+      const dataSearch = req.query.dataSearch as string
+      
+      const result: Image[] = await imageBusiness.searchImage(dataSearch)
 
       res.status(200).send(result);
     } catch (error) {
