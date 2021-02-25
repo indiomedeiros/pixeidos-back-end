@@ -23,7 +23,7 @@ export class ImageBusiness {
       check.checkExistenceProperty(tags, "tags");
       check.checkExistenceProperty(collection, "collection");
       check.checkExistenceProperty(token, "token");
-      
+
       const author = await this.authenticator.getTokenData(token);
       const id = this.idGenerator.generate();
       const date = new Date();
@@ -36,7 +36,7 @@ export class ImageBusiness {
         tags,
         collection,
       };
-      
+
       await this.imageDatabase.createImage(image);
 
       return message;
@@ -56,7 +56,10 @@ export class ImageBusiness {
       await this.authenticator.getTokenData(token);
 
       const result: Image[] = await this.imageDatabase.getAllImages();
-
+      check.checkExistenceArray(
+        result,
+        "There are no images"
+      );
       return result;
     } catch (error) {
       throw new CustomError(
