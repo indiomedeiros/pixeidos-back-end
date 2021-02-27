@@ -1,4 +1,4 @@
-PixMoviment 
+PixMovement 
 ======
 Objective
 ----
