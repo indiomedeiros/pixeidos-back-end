@@ -44,7 +44,7 @@ export class ImageDatabase extends BaseDatabase {
         .from(TablesDatabase.PIXEIDOS_IMAGES)
         .where("tags", "LIKE", `%${dataSearch}%`);
 
-      return result[0];
+      return result;
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);
     }
