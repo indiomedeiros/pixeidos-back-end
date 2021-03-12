@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { request, Request, Response } from "express";
 import { LoginInputDTO, UserInputDTO } from "../business/entities/User";
 import { Autheticator } from "../business/service/Authenticator";
 import { HashManager } from "../business/service/HashManager";
@@ -45,6 +45,21 @@ export class UserController {
       res.status(200).send({ token });
     } catch (error) {
       res.status(error.statusCode || 400).send({ error: error.message });
+    }
+  }
+
+  public async getUserById(req: Request, res: Response): Promise<void> {
+    try {
+      const token = req.headers.authorization as string;
+      const id = req.params.id
+
+      const result = await userBusiness.getUserById(token, id);
+
+      res.status(200).send(result);
+    } catch (error) {
+      res
+        .status(error.statusCode || 400)
+        .send(error.sqlMessage || error.message);
     }
   }
 }
