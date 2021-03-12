@@ -1,4 +1,4 @@
-import { User } from "../business/entities/User";
+import { User, UserOutputDTO } from "../business/entities/User";
 import { BaseDatabase } from "./BaseDatabase";
 import { TablesDatabase } from "./TablesDatabase";
 
@@ -20,6 +20,18 @@ export class UserDatabase extends BaseDatabase {
         .from(TablesDatabase.PIXEIDOS_USERS)
         .where({ email });
 
+      return result[0];
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
+  public async getUserById(id: string): Promise<UserOutputDTO> {
+    try {
+      const result = await BaseDatabase.connection
+        .select("name", "nickname")
+        .from(TablesDatabase.PIXEIDOS_USERS)
+        .where({ id });
       return result[0];
     } catch (error) {
       throw new Error(error.sqlMessage || error.message);

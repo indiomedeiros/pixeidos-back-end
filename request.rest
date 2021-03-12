@@ -21,7 +21,7 @@ Content-Type: application/json
 ### create Image
 POST http://localhost:3003/image/create
 Content-Type: application/json
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNDE4ODQwNiwiZXhwIjoxNjE0Mjc0ODA2fQ.oirNr4rLpCLosMSZLS9v0nN3SxB1J-kgKVq-KsQa39U 
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNTU3MDMyNywiZXhwIjoxNjE1NjU2NzI3fQ.DsDg3nSnUT7MAiaeA0beYX8xa4jMZwYaKfOyUPywx3s 
 
 {
 	"subtitle": "Crianças brincando no deserto",
@@ -29,6 +29,13 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtN
 	"tags": "Crianças, Infância, Jogos, Jogar, Diversão, Brincalhão",
 	"collection": "vida"    
 }
+
+### get user by id
+GET http://localhost:3003/user/66e663ae-d9b5-4b7e-8541-de62915b6305
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNTU3MDMyNywiZXhwIjoxNjE1NjU2NzI3fQ.DsDg3nSnUT7MAiaeA0beYX8xa4jMZwYaKfOyUPywx3s
+
+
 ###get all images
 GET http://localhost:3003/image/all
 Content-Type: application/json

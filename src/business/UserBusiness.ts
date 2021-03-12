@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { LoginInputDTO, User, UserInputDTO } from "./entities/User";
+import { LoginInputDTO, User, UserInputDTO, UserOutputDTO } from "./entities/User";
 import { CheckBusiness } from "./errors/CheckBusiness";
 import { CustomError } from "./errors/CustomError";
 import { Autheticator } from "./service/Authenticator";
@@ -68,6 +68,28 @@ export class UserBusiness {
       const acessToken = this.authenticator.generateToken({ id: user.id });
 
       return acessToken;
+    } catch (error) {
+      throw new CustomError(
+        error.statusCode,
+        error.sqlMessage || error.message
+      );
+    }
+  }
+
+  public async getUserById(token: string, id: string): Promise<UserOutputDTO> {
+    try {
+      const check = new CheckBusiness();
+      check.checkExistenceProperty(token, "token");
+      check.checkExistenceProperty(id, "id");
+
+      await this.authenticator.getTokenData(token);
+
+      const result: UserOutputDTO = await this.userDatabase.getUserById(id);
+      check.checkExistenceObject(
+        result,
+        "Nothing was found from the given 'id'"
+      );
+      return result;
     } catch (error) {
       throw new CustomError(
         error.statusCode,
