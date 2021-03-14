@@ -4,6 +4,7 @@
    "main": "index.js",
    "scripts": {
       "start": "tsc && node ./build/src/index.js",
+      "build": "tsc",
       "createTables": "tsc && node ./build/src/data/mysqlSetup.js",
       "dev": "ts-node-dev ./src/index.ts",
       "test": "jest"
@@ -32,7 +33,5 @@
       "ts-jest": "^26.5.1",
       "typescript": "^3.9.9"
    },
-   "devDependencies": {
-      
-   }
+   "devDependencies": {}
 }
