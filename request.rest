@@ -25,16 +25,14 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtN
 
 {
 	"subtitle": "Crianças brincando no deserto",
-	"file": "https://pixabay.com/images/id-5833685/",
-	"tags": "Crianças, Infância, Jogos, Jogar, Diversão, Brincalhão",
+	"file": "https://cdn.pixabay.com/photo/2020/07/17/13/00/tree-5414036_960_720.jpg",
+	"tags": "Árvore, Único, Reino, Unido, Nuvem, Nascer, Pôr, Do, Sol",
 	"collection": "vida"    
 }
 
 ### get user by id
 GET http://localhost:3003/user/66e663ae-d9b5-4b7e-8541-de62915b6305
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNTU3MDMyNywiZXhwIjoxNjE1NjU2NzI3fQ.DsDg3nSnUT7MAiaeA0beYX8xa4jMZwYaKfOyUPywx3s
-
 
 ###get all images
 GET http://localhost:3003/image/all

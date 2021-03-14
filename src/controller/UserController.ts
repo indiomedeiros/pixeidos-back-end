@@ -50,10 +50,9 @@ export class UserController {
 
   public async getUserById(req: Request, res: Response): Promise<void> {
     try {
-      const token = req.headers.authorization as string;
       const id = req.params.id
 
-      const result = await userBusiness.getUserById(token, id);
+      const result = await userBusiness.getUserById(id);
 
       res.status(200).send(result);
     } catch (error) {

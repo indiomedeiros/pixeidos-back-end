@@ -76,13 +76,11 @@ export class UserBusiness {
     }
   }
 
-  public async getUserById(token: string, id: string): Promise<UserOutputDTO> {
+  public async getUserById( id: string): Promise<UserOutputDTO> {
     try {
       const check = new CheckBusiness();
-      check.checkExistenceProperty(token, "token");
       check.checkExistenceProperty(id, "id");
 
-      await this.authenticator.getTokenData(token);
 
       const result: UserOutputDTO = await this.userDatabase.getUserById(id);
       check.checkExistenceObject(
