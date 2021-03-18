@@ -32,11 +32,8 @@ JWT_EXPIRES_IN = token expiration time (1d, 1y)
 Create tables
 ---
 * `npm run createTables` - Creates the necessary tables for the project.
-
 * `npm run start` - Starts the connection to the database and runs the project. You need to give the command ctrl + C to stop the execution.
-
 * `npm run dev`: Restart the server automatically every time the project is saved.
-*
 * `npm run test`: Run unit tests
 
 How to test API endpoints?
