@@ -1,6 +1,11 @@
 #
 PixMovement - Project Full Stack (Back-end)
 ===
+Projeto criado para estudos de desenvolvimento full stack. 
+Trata-se de um repositório de imagem com objetivo de tentar incentivar 
+as pessoas a se movimentarem.
+
+
 * Heroku: https://pix-moviment.herokuapp.com
 * Front-end: https://github.com/indiomedeiros/pixeidos-front-end/blob/master/README.md
 
@@ -41,16 +46,31 @@ How to test API endpoints?
 
 * search and install the extension on your vscode: `humao.rest-client`
 * use the `request.rest` file to make requests by clicking on the text` Send Request`.
+
+Request:
 ```
 
-### create User
-POST http://localhost:3003/user/signup
+### login
+POST http://localhost:3003/user/login
 Content-Type: application/json
 
 {
-    "name": "Índio Medeiros",
-    "email": "bboyindio@gmail.com",
-    "nickname": "Ìndio",
-    "password": "12345678"  
+   "email": "bboyindio@gmail.com",
+   "password": "12345678"    
+}
+```
+Response:
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 199
+ETag: W/"c7-4VK5QfWwQEsqXM8iYwmTlWs05PY"
+Date: Thu, 18 Mar 2021 18:56:00 GMT
+Connection: close
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTY2M2FlLWQ5YjUtNGI3ZS04NTQxLWRlNjI5MTViNjMwNSIsImlhdCI6MTYxNjA5Mzc2MCwiZXhwIjoxNjE2MTgwMTYwfQ.DznF5S9G7LuEMI4vVulfWmN9kf21Kgg1FpWJxjL8Bjc"
 }
 ```
