@@ -1,8 +1,8 @@
 #
 PixMovement - Project Full Stack (Back-end)
 ===
-Projeto criado para estudos de desenvolvimento full stack. Trata-se de um repositório de imagem com objetivo de tentar incentivar 
-as pessoas a se exercitar através de referências imagéticas.
+Project created for full stack development studies. It is an image repository with the aim of trying to encourage 
+people to exercise through imagery references.
 
 
 * Heroku: https://pix-moviment.herokuapp.com
